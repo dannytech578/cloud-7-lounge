@@ -88,7 +88,6 @@ const deliveryLocationInput = document.querySelector("#delivery-location");
 const cartSummaryField = document.querySelector(".cart-summary-field");
 const cartSummaryInput = document.querySelector("#order-cart-summary");
 const bookingForm = document.querySelector(".booking-form");
-const emailFallbackButton = document.querySelector(".email-fallback-button");
 const cart = new Map();
 let cartCheckoutMode = false;
 let nextOrderItemRowId = 2;
@@ -358,16 +357,6 @@ function openEmailDraft() {
     "Your email app should open with the request addressed to ukanah6@gmail.com. Press Send in your email app to complete your request.";
 }
 
-function openWhatsAppRequest() {
-  if (!bookingForm.reportValidity()) return;
-
-  const message = `Hello Cloud 7, I would like to send this request:\n\n${getRequestDetails()}`;
-  const whatsappUrl = `https://wa.me/2348035269885?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  document.querySelector(".form-setup-note").textContent =
-    "WhatsApp opened with your request. Press Send in WhatsApp to complete it.";
-}
-
 menuFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     menuFilterButtons.forEach((filter) => {
@@ -444,9 +433,6 @@ orderItemsList.addEventListener("change", updateManualOrderSummary);
 orderItemsList.addEventListener("input", updateManualOrderSummary);
 addOrderItemButton.addEventListener("click", addOrderItemRow);
 orderMethodSelect.addEventListener("change", () => updateDeliveryLocationField());
-emailFallbackButton.addEventListener("click", () => {
-  openWhatsAppRequest();
-});
 bookingForm.addEventListener("submit", (event) => {
   event.preventDefault();
   openEmailDraft();

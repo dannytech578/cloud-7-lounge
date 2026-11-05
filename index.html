@@ -51,6 +51,7 @@
         <div class="cart-footer">
           <div class="cart-subtotal"><span>Subtotal</span><strong>₦0</strong></div>
           <p>Final price and availability will be confirmed by Cloud 7.</p>
+          <button class="cart-cancel" type="button" disabled>Cancel order</button>
           <button class="button button-gold cart-checkout" type="button" disabled>Continue to order <span aria-hidden="true">↗</span></button>
         </div>
       </dialog>
@@ -535,10 +536,7 @@
             <div class="booking-contact"><span>CALL US</span><a href="tel:+2349168713362">0916 871 3362</a></div>
           </div>
           <div class="booking-form-wrap reveal">
-            <form class="booking-form" action="https://formsubmit.co/ukanah6@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Cloud 7 reservation or order request" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <form class="booking-form">
               <div class="form-heading">
                 <span class="eyebrow">TELL US WHAT YOU NEED</span>
                 <p>We’ll follow up to confirm your request.</p>
@@ -577,17 +575,32 @@
                   </div>
                 </div>
                 <div class="request-fields form-full" id="order-fields" hidden>
+                  <div id="order-items-list">
+                    <div class="form-grid order-item-row">
+                      <label class="form-field form-full" for="order-item">Choose an item
+                        <select id="order-item" name="Order item" required disabled></select>
+                      </label>
+                      <label class="form-field" for="order-quantity">Quantity
+                        <input id="order-quantity" name="Quantity" type="number" min="1" max="50" value="1" required disabled />
+                      </label>
+                    </div>
+                  </div>
+                  <p class="order-items-hint">Add more than one item to your order if you like.</p>
+                  <button class="add-order-item" type="button" disabled>Add another item <span aria-hidden="true">+</span></button>
                   <div class="form-grid">
-                    <label class="form-field form-full" for="order-item">Choose an item
-                      <select id="order-item" name="Order item" required disabled></select>
-                    </label>
-                    <label class="form-field" for="order-quantity">Quantity
-                      <input id="order-quantity" name="Quantity" type="number" min="1" max="50" value="1" required disabled />
-                    </label>
                     <label class="form-field" for="order-method">How would you like it?
                       <select id="order-method" name="Order preference" disabled>
-                        <option>Pickup</option><option>Delivery (confirm availability)</option><option>At my table</option>
+                        <option value="Pickup">Pickup</option><option value="Delivery">Delivery (confirm availability)</option><option value="At my table">At my table</option>
                       </select>
+                    </label>
+                    <label class="form-field form-full delivery-location-field" for="delivery-location" hidden>Delivery address or location
+                      <input id="delivery-location" name="Delivery address or location" type="text" autocomplete="street-address" disabled />
+                    </label>
+                    <label class="form-field form-full order-summary-field" for="order-items-summary" hidden>Order summary
+                      <textarea id="order-items-summary" name="Order summary" rows="3" readonly disabled></textarea>
+                    </label>
+                    <label class="form-field form-full cart-summary-field" for="order-cart-summary" hidden>Cart order summary
+                      <textarea id="order-cart-summary" name="Cart order summary" rows="3" readonly disabled></textarea>
                     </label>
                   </div>
                 </div>
@@ -596,10 +609,10 @@
                 </label>
                 <div class="form-full form-submit-row">
                   <button class="button button-gold" type="submit">Send my request <span aria-hidden="true">↗</span></button>
-                  <span>Your request will be emailed to Cloud 7.</span>
+                  <span>Your email app will open with your request. Press Send there to complete it.</span>
                 </div>
               </div>
-              <p class="form-setup-note">Form delivery is handled by FormSubmit. The first submission requires verifying <strong>ukanah6@gmail.com</strong> using the confirmation email they send.</p>
+              <p class="form-setup-note">Submitting opens a prefilled email to <strong>ukanah6@gmail.com</strong>. You’ll need to press Send in your email app.</p>
             </form>
           </div>
         </div>
